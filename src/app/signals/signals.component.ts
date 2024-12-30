@@ -9,15 +9,15 @@ import { Component, signal } from '@angular/core';
 })
 export class SignalsComponent {
   actions: string[] = [];
-  counter = signal(0);
+  counter = signal<number>(0);
 
   increment() {
-    this.counter.set(this.counter() + 1);
+    this.counter.update((oldValue) => oldValue + 1);
     this.actions.push('INCREMENT');
   }
 
   decrement() {
-    this.counter.set(this.counter() - 1);
+    this.counter.update((oldValue) => oldValue - 1);
     this.actions.push('DECREMENT');
   }
 }
